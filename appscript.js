@@ -75,6 +75,16 @@ function callApi(requestBody, sheet) {
     payload: JSON.stringify(requestBody),
   };
 
+  // Function to create the requestBody object
+function createRequestBody(prompt, temperature, maxTokens) {
+  return {
+    model: MODEL_TYPE,
+    messages: [{ role: "user", content: prompt }],
+    temperature,
+    max_tokens: maxTokens,
+  };
+}
+
   const response = UrlFetchApp.fetch("https://api.openai.com/v1/chat/completions", requestOptions);
   const responseText = response.getContentText();
   const json = JSON.parse(responseText);
