@@ -19,12 +19,7 @@ function generateWeb() {
   const temperature = 0;
   const maxTokens = 2050;
 
-  const requestBody = {
-    model: MODEL_TYPE,
-    messages: [{role: "user", content: prompt}],
-    temperature,
-    max_tokens: maxTokens,
-  };
+  const requestBody = createRequestBody(prompt, temperature, maxTokens);
 
   callApi(requestBody, sheet); // Call the API function
 }
@@ -36,12 +31,7 @@ function generateAdCopy() {
   const temperature = 0;
   const maxTokens = 2050;
 
-  const requestBody = {
-    model: MODEL_TYPE,
-    messages: [{role: "user", content: prompt}],
-    temperature,
-    max_tokens: maxTokens,
-  };
+  const requestBody = createRequestBody(prompt, temperature, maxTokens);
 
   callApi(requestBody, sheet); // Call the API function
 }
@@ -54,12 +44,7 @@ function generateKeywords() {
   const temperature = 0;
   const maxTokens = 2050;
 
-  const requestBody = {
-    model: MODEL_TYPE,
-    messages: [{role: "user", content: prompt}],
-    temperature,
-    max_tokens: maxTokens,
-  };
+  const requestBody = createRequestBody(prompt, temperature, maxTokens);
 
   callApi(requestBody, sheet); // Call the API function
 }
