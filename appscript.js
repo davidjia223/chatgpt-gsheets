@@ -1,6 +1,6 @@
 // Constants
-const API_KEY = "sk-xxxx";
-const MODEL_TYPE = "gpt-3.5-turbo"; //chatGPT model
+const API_KEY = "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";
+const MODEL_TYPE = "gpt-3.5-turbo"; // chatGPT model
 
 // Creates a custom menu in Google Sheet
 function onOpen() {
@@ -9,13 +9,26 @@ function onOpen() {
     .addItem("Generate Keywords", "generateKeywords")
     .addItem("Create Ad Copy", "generateAdCopy")
     .addItem("Search web related result", "generateWeb")
+    .addItem("Calculate Number", "numCalculate")
     .addToUi();
 }
+
+
 
 function generateWeb() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const selectedText = sheet.getActiveRange().getValue();
   const prompt = "Generate the top 5 recommended websites for this keyword: " + selectedText;
+  const requestBody = createRequestBody(prompt);
+
+  callApi(requestBody, sheet); // Call the API function
+}
+
+
+function numCalculate() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const selectedText = sheet.getActiveRange().getValue();
+  const prompt = "Calculate this number for the keyword: " + selectedText;
   const requestBody = createRequestBody(prompt);
 
   callApi(requestBody, sheet); // Call the API function
